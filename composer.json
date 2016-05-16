@@ -1,0 +1,33 @@
+{
+  "name": "petercoles/xero",
+  "type": "library",
+  "description": "Xero API wrapper",
+  "keywords": ["Xero", "Accounting", "API"],
+  "homepage": "https://github.com/petercoles/xero",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Peter Coles",
+      "email": "peterdcoles@gmail.com",
+      "homepage": "http://petercoles.com"
+    }
+  ],
+  "support": {
+      "issues": "https://github.com/petercoles/xero/issues"
+  },
+  "require": {
+    "php": ">=5.6.0",
+    "guzzlehttp/guzzle": "^6.2",
+    "duncan3dc/blade": "^3.0"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "~5.3",
+    "mockery/mockery": "^0.9"
+  },
+  "autoload": {
+    "psr-4": {
+      "PeterColes\\Xero\\": "src/",
+      "PeterColes\\Tests\\": "tests/"
+    }
+  }
+}
