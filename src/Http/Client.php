@@ -15,22 +15,22 @@ class Client
     protected $method;
     protected $endpoint;
     protected $data;
-    protected $headers = ['Accept' => 'application/json'];
+    protected $headers = [ 'Accept' => 'application/json' ];
 
     public function __construct($config)
     {
         $stack = HandlerStack::create();
 
-        $stack->push(new Oauth1([
-            'consumer_key' => $config['consumer_key'],
-            'token' => $config['consumer_key'],
-            'token_secret' => $config['consumer_secret'],
-            'private_key_file' => $config['private_key_file'],
-            'private_key_passphrase' => $config['private_key_passphrase'],
+        $stack->push(new Oauth1( [ 
+            'consumer_key' => $config[ 'consumer_key' ],
+            'token' => $config[ 'consumer_key' ],
+            'token_secret' => $config[ 'consumer_secret' ],
+            'private_key_file' => $config[ 'private_key_file' ],
+            'private_key_passphrase' => $config[ 'private_key_passphrase' ],
             'signature_method' => Oauth1::SIGNATURE_METHOD_RSA,
         ]));
 
-        $this->guzzleClient = new HttpClient(['handler' => $stack]);
+        $this->guzzleClient = new HttpClient([ 'handler' => $stack ]);
     }
 
     public function setMethod($method)
