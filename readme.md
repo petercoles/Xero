@@ -15,7 +15,7 @@ But back to this package ...
 At the command line run
 
 ```
-composer require petercoles/bxero
+composer require petercoles/xero
 ```
 
 
