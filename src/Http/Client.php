@@ -25,7 +25,7 @@ class Client
             'consumer_key' => $config['consumer_key'],
             'token' => $config['consumer_key'],
             'token_secret' => $config['consumer_secret'],
-            'private_key_file' => __DIR__.'/'.$config['private_key_file'],
+            'private_key_file' => $config['private_key_file'],
             'private_key_passphrase' => $config['private_key_passphrase'],
             'signature_method' => Oauth1::SIGNATURE_METHOD_RSA,
         ]));
