@@ -6,8 +6,9 @@ class Report extends BaseApi
 {
     const METHOD = 'get';
 
-    protected function setResource($resource)
+    protected function setEndpoint($resource)
     {
-        $this->resource = "reports/$resource";
+        $this->resource = 'reports';
+        $this->endpoint = "reports/$resource";
     }
 }

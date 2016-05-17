@@ -17,6 +17,11 @@ abstract class BaseApi
     protected $resource;
 
     /**
+     * Theendpoint to which requests will be directed.
+     */
+    protected $endpoint;
+
+    /**
      * The parameters that will be passed to the API method being invoked.
      */
     protected $params = null;
@@ -33,7 +38,7 @@ abstract class BaseApi
 
     public function instance($params)
     {
-        $this->setResource($params[ 0 ]);
+        $this->setEndpoint($params[ 0 ]);
 
         if (isset($params[ 1 ])) {
             $this->setParams($params[ 1 ]);
@@ -44,16 +49,19 @@ abstract class BaseApi
 
     public function request()
     {
-        return $this->httpClient
+        $response = $this->httpClient
             ->setMethod(static::METHOD)
-            ->setEndpoint($this->resource)
+            ->setEndpoint($this->endpoint)
             ->send()
         ;
+
+        return $response->{ucfirst($this->resource)};
     }
 
-    protected function setResource($resource)
+    protected function setEndpoint($resource)
     {
         $this->resource = $resource;
+        $this->endpoint = $resource;
     }
 
     protected function setParams($params)

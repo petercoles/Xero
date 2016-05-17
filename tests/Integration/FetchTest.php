@@ -8,8 +8,8 @@ class FetchTest extends BaseTest
     {
         $response = $this->xero->fetch('accounts')->request();
 
-        $this->assertTrue(is_array($response->Accounts));
-        $this->assertObjectHasAttribute('AccountID', $response->Accounts[0]);
-        $this->assertObjectHasAttribute('EnablePaymentsToAccount', $response->Accounts[0]);
+        $this->assertTrue(is_array($response));
+        $this->assertObjectHasAttribute('AccountID', $response[0]);
+        $this->assertObjectHasAttribute('EnablePaymentsToAccount', $response[0]);
     }
 }
