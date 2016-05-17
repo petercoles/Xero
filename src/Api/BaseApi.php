@@ -7,12 +7,12 @@ use PeterColes\Xero\Http\Client as HttpClient;
 abstract class BaseApi
 {
     /**
-     * HTTP client
+     * The HTTP client that will be used to send requests
      */
     protected $httpClient;
 
     /**
-     * The API resource being acted up.
+     * The API resource being requested or acted upon.
      */
     protected $resource;
 
@@ -36,6 +36,12 @@ abstract class BaseApi
         $this->httpClient = new HttpClient($config);
     }
 
+    /**
+     * store endpoint and parameters, and return an instance suitable for chaining
+     *
+     * @param array $params
+     * @return ApiInstance
+     */
     public function instance($params)
     {
         $this->setEndpoint($params[ 0 ]);
@@ -47,6 +53,11 @@ abstract class BaseApi
         return $this;
     }
 
+    /**
+     * Dispatch request and return the required resource
+     *
+     * @return array
+     */
     public function request()
     {
         $response = $this->httpClient
@@ -58,12 +69,23 @@ abstract class BaseApi
         return $response->{ucfirst($this->resource)};
     }
 
+    /**
+     * Apply resource name. Normally this will double as the final uri segment
+     * of the endpoint, but not always (Yes, I'm talking about you "reports")
+     *
+     * @param array $resource
+     */
     protected function setEndpoint($resource)
     {
         $this->resource = $resource;
         $this->endpoint = $resource;
     }
 
+    /**
+     * Simple setter for parameters - likely to be overridden frequently
+     *
+     * @param array $params
+     */
     protected function setParams($params)
     {
         $this->params = $params;

@@ -2,7 +2,9 @@
 
 namespace PeterColes\Xero\Api;
 
-class Fetch extends BaseApi
+use PeterColes\Xero\Api\ApiInterface;
+
+class Fetch extends BaseApi implements ApiInterface
 {
     const METHOD = 'get';
 }
