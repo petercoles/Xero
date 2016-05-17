@@ -24,7 +24,7 @@ abstract class BaseApi
     /**
      * Ensure that we have an HTTP client with which to work
      *
-     * @param HttpClient $httpClient
+     * @param array $config
      */
     public function __construct($config)
     {
@@ -45,7 +45,7 @@ abstract class BaseApi
     public function request()
     {
         return $this->httpClient
-            ->setMethod($this->method)
+            ->setMethod(static::METHOD)
             ->setEndpoint($this->resource)
             ->send()
         ;
