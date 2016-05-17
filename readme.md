@@ -25,7 +25,7 @@ composer require petercoles/bxero
 
 ## Testing
 
-The package will have two test suites. A "unit" test suite will simulate http activity (i.e. won't hit the Betfair servers), and an "integration" test suite that will test connectivity and the acceptability of requests so will need valid credentials. These should be placed in a file called .env.php which can be created by copying the .env.example.php file in the package's root folder.
+The package will have two test suites. A "unit" test suite will simulate http activity (i.e. won't hit the Betfair servers), and an "integration" test suite that will test connectivity and the acceptability of requests so will need valid credentials. These should be placed in a file called .env.php in the tests/Integration folder which can be created by editing and renaming the .env.example.php file that's already there.
 
 To run the test suites:
 ```

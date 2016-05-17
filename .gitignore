@@ -1,4 +1,4 @@
 /vendor
 composer.lock
-.env.php
+/tests/Integration/.env.php
 /cert/private-key.pem
