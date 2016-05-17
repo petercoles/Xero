@@ -13,7 +13,7 @@ class Xero
     {
         $class = 'PeterColes\\Xero\\Api\\'.ucfirst($method);
         if (class_exists($class)) {
-            return call_user_func([ new $class($this->config), 'instance' ], $params);
+            return call_user_func([new $class($this->config), 'instance'], $params);
         }
     }
 }

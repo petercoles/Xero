@@ -15,7 +15,7 @@ class Client
     protected $method;
     protected $endpoint;
     protected $data;
-    protected $headers = [ 'Accept' => 'application/json' ];
+    protected $headers = ['Accept' => 'application/json'];
 
     public function __construct($config)
     {
@@ -30,7 +30,7 @@ class Client
             'signature_method' => Oauth1::SIGNATURE_METHOD_RSA,
         ]));
 
-        $this->guzzleClient = new HttpClient([ 'handler' => $stack ]);
+        $this->guzzleClient = new HttpClient(['handler' => $stack]);
     }
 
     public function setMethod($method)
