@@ -2,8 +2,6 @@
 
 namespace PeterColes\Xero;
 
-use PeterColes\Xero\Http\Client as HttpClient;
-
 class Xero
 {
     public function __construct($config)
