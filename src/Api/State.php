@@ -8,6 +8,11 @@ use PeterColes\Xero\Api\Report;
 class State implements ApiInterface
 {
     /**
+     * Instance of the Report class from which data is obtained 
+     */
+    protected $report;
+
+    /**
      * Parameters are received by instance method and stored
      * to be passed to the class(es) being aliased
      */
