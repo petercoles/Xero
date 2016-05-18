@@ -55,18 +55,19 @@ class State implements ApiInterface
     /**
      * Massage balance sheet data
      *
-     * @param  array $report   data received from Report
+     * @param  string $report   name of report being filtered
+     * @param  array  $data     data received from Report class
      * @return array
      */
     protected function filter($report, $data)
     {
-        $outerRows = $data[0]->Rows;
+        $outerRows = $data[ 0 ]->Rows;
 
         $balances = [];
         foreach ($outerRows as $outerRow) {
             if ($outerRow->RowType == 'Section' && sizeof($outerRow->Rows) > 0) {
                 foreach ($outerRow->Rows as $innerRow) {
-                    if ($innerRow->RowType == 'Row' && isset($innerRow->Cells[0]->Attributes)) {
+                    if ($innerRow->RowType == 'Row' && isset($innerRow->Cells[ 0 ]->Attributes)) {
                         $balances[] = (object) $this->$report($innerRow->Cells);
                     }
                 }
@@ -77,9 +78,9 @@ class State implements ApiInterface
     }
 
     /**
-     * Massage balance sheet data
+     * Filter balance sheet data
      *
-     * @param  array $report   data received from Report
+     * @param  array $data   received from Report
      * @return array
      */
     protected function balanceSheet($data)
@@ -88,9 +89,9 @@ class State implements ApiInterface
     }
 
     /**
-     * Massage profit and loss data
+     * Filter profit and loss data
      *
-     * @param  array $report   data received from Report
+     * @param  array $data   received from Report
      * @return array
      */
     protected function profitAndLoss($data)
@@ -103,16 +104,16 @@ class State implements ApiInterface
      * In the balance sheet it means the current state, but for the P&L account, it
      * means the non-zero balances for the current month only (YTD to be added soon).
      *
-     * @param  array $report   data received from Report
+     * @param  array $data
      * @return array
      */
     protected function current($data)
     {
         return [
-            'Id' => $data[0]->Attributes[0]->Value,
-            'Type' => $data[0]->Attributes[0]->Id,
-            'Name' => $data[0]->Value,
-            'Value' => $data[1]->Value,
+            'Id' => $data[ 0 ]->Attributes[ 0 ]->Value,
+            'Type' => $data[ 0 ]->Attributes[ 0 ]->Id,
+            'Name' => $data[ 0 ]->Value,
+            'Value' => $data[ 1 ]->Value,
         ];
     }
 }
