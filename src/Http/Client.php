@@ -21,7 +21,7 @@ class Client
     {
         $stack = HandlerStack::create();
 
-        $stack->push(new Oauth1( [ 
+        $stack->push(new Oauth1([ 
             'consumer_key' => $config[ 'consumer_key' ],
             'token' => $config[ 'consumer_key' ],
             'token_secret' => $config[ 'consumer_secret' ],
@@ -66,7 +66,7 @@ class Client
         ];
 
         if ($this->data) {
-            $options['body'] = $this->data;
+            $options[ 'body' ] = $this->data;
         }
 
         $response = $this->guzzleClient->request($this->method, $this->endpoint, $options);
