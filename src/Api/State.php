@@ -63,12 +63,12 @@ class State implements ApiInterface
     {
         $outerRows = $data[ 0 ]->Rows;
 
-        $balances = [];
+        $balances = [ ];
         foreach ($outerRows as $outerRow) {
             if ($outerRow->RowType == 'Section' && sizeof($outerRow->Rows) > 0) {
                 foreach ($outerRow->Rows as $innerRow) {
                     if ($innerRow->RowType == 'Row' && isset($innerRow->Cells[ 0 ]->Attributes)) {
-                        $balances[] = (object) $this->$report($innerRow->Cells);
+                        $balances[ ] = (object) $this->$report($innerRow->Cells);
                     }
                 }
             }
