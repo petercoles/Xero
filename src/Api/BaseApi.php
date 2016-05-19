@@ -27,6 +27,11 @@ abstract class BaseApi
     protected $params = null;
 
     /**
+     * String containing query parameters to be appended to the request.
+     */
+    protected $where = '';
+
+    /**
      * Ensure that we have an HTTP client with which to work
      *
      * @param array $config
@@ -62,11 +67,17 @@ abstract class BaseApi
     {
         $response = $this->httpClient
             ->setMethod(static::METHOD)
-            ->setEndpoint($this->endpoint)
+            ->setEndpoint($this->endpoint.$this->where)
             ->send()
         ;
 
         return $response->{ucfirst($this->resource)};
+    }
+
+    public function where($queryParams)
+    {
+        $this->where = '?where='.rawurlencode($queryParams);
+        return $this;
     }
 
     /**
