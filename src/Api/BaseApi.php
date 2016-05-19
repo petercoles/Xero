@@ -13,11 +13,13 @@ abstract class BaseApi
 
     /**
      * The API resource being requested or acted upon.
+     * This is used to extract the requested data from the response.
      */
     protected $resource;
 
     /**
      * The endpoint to which requests will be directed.
+     * This is used to build the query string for the request.
      */
     protected $endpoint;
 
