@@ -15,7 +15,7 @@ class Client
     protected $method;
     protected $endpoint;
     protected $data;
-    protected $headers = [ 'Accept' => 'application/json' ];
+    protected $headers = [ ];
 
     public function __construct($config)
     {

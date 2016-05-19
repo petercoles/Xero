@@ -29,6 +29,12 @@ abstract class BaseApi
     protected $params = null;
 
     /**
+     * Headers to be added to the request, e.g. to communicate the required
+     * format for the response or set limits on the data returned
+     */
+    protected $headers = [ 'Accept' => 'application/json' ];
+
+    /**
      * String containing query parameters to be appended to the request.
      */
     protected $where = '';
@@ -69,6 +75,7 @@ abstract class BaseApi
     {
         $response = $this->httpClient
             ->setMethod(static::METHOD)
+            ->setHeaders($this->headers)
             ->setEndpoint($this->endpoint.$this->where)
             ->send()
         ;
@@ -76,6 +83,23 @@ abstract class BaseApi
         return $response->{ucfirst($this->resource)};
     }
 
+    /**
+     * Merge new headers into existing headers array.
+     * New entrytakes precedence.
+     *
+     * @return ApiInstance
+     */
+    public function header($header)
+    {
+        $this->headers = array_merge($this->headers, $header);
+        return $this;
+    }
+
+    /**
+     * Prepare to append query parameters to the request.
+     *
+     * @return ApiInstance
+     */
     public function where($queryParams)
     {
         $this->where = '?where='.rawurlencode($queryParams);
