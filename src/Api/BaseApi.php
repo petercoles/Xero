@@ -17,7 +17,7 @@ abstract class BaseApi
     protected $resource;
 
     /**
-     * Theendpoint to which requests will be directed.
+     * The endpoint to which requests will be directed.
      */
     protected $endpoint;
 
