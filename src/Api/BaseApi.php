@@ -118,6 +118,17 @@ abstract class BaseApi
     }
 
     /**
+     * Prepare to append query parameters to the request.
+     *
+     * @return ApiInstance
+     */
+    public function reference($reference)
+    {
+        $this->endpoint .= '/'.$reference;
+        return $this;
+    }
+
+    /**
      * Apply resource name. Normally this will double as the final uri segment
      * of the endpoint, but not always (Yes, I'm talking about you "reports")
      *
