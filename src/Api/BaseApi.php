@@ -37,7 +37,7 @@ abstract class BaseApi
     /**
      * String containing query parameters to be appended to the request.
      */
-    protected $where = '';
+    protected $query = '';
 
     /**
      * Ensure that we have an HTTP client with which to work
@@ -76,7 +76,7 @@ abstract class BaseApi
         $response = $this->httpClient
             ->setMethod(static::METHOD)
             ->setHeaders($this->headers)
-            ->setEndpoint($this->endpoint.$this->where)
+            ->setEndpoint($this->endpoint.$this->query)
             ->send()
         ;
 
@@ -102,7 +102,18 @@ abstract class BaseApi
      */
     public function where($queryParams)
     {
-        $this->where = '?where='.rawurlencode($queryParams);
+        $this->query = '?where='.rawurlencode($queryParams);
+        return $this;
+    }
+
+    /**
+     * Prepare to append query parameters to the request.
+     *
+     * @return ApiInstance
+     */
+    public function offset($offset)
+    {
+        $this->query = '?offset='.$offset;
         return $this;
     }
 
