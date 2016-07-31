@@ -77,6 +77,7 @@ abstract class BaseApi
             ->setMethod(static::METHOD)
             ->setHeaders($this->headers)
             ->setEndpoint($this->endpoint.$this->query)
+            ->setData($this->params)
             ->send()
         ;
 
