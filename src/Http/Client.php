@@ -69,7 +69,11 @@ class Client
             $options[ 'form_params' ] = $this->data;
         }
 
-        $response = $this->guzzleClient->request($this->method, $this->endpoint, $options);
+        try {
+            $response = $this->guzzleClient->request($this->method, $this->endpoint, $options);
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            var_dump($e->getResponse()->getBody()->getContents());
+        }
 
         return $this->getBody($response);
     }
