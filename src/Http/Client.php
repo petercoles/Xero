@@ -66,7 +66,7 @@ class Client
         ];
 
         if ($this->data) {
-            $options[ 'body' ] = $this->data;
+            $options[ 'form_params' ] = $this->data;
         }
 
         $response = $this->guzzleClient->request($this->method, $this->endpoint, $options);
