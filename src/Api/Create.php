@@ -10,6 +10,7 @@ class Create extends BaseApi implements ApiInterface
 
     protected $headers = [
         'Content-Type' => 'application/x-www-form-urlencoded',
+        'Accept' => 'application/json',
         'Encoding' => 'UTF-8'
     ];
 }
