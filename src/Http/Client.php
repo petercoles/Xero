@@ -79,13 +79,13 @@ class Client
     }
 
     /**
-     * Get http response body, cast to json and decode.
+     * Get http response body, cast to a string to extract the data from the stream.
      *
      * @param ResponseInterface $response
-     * @return array
+     * @return string
      */
     protected function getBody(ResponseInterface $response)
     {
-        return json_decode((string) $response->getBody());
+        return (string) $response->getBody();
     }
 }

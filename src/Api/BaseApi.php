@@ -81,7 +81,7 @@ abstract class BaseApi
             ->send()
         ;
 
-        return $response->{ucfirst($this->resource)};
+        return $this->handleResponse($response);
     }
 
     /**
@@ -149,5 +149,15 @@ abstract class BaseApi
     protected function setParams($params)
     {
         $this->params = $params;
+    }
+
+    /**
+     * By default we request a json response, so we need to decode it
+     *
+     * @param string $response
+     */
+    protected function handleResponse($response)
+    {
+        return json_decode($response)->{ucfirst($this->resource)};
     }
 }
